@@ -39,5 +39,6 @@
 	<modules>
 		<module>Broker</module>
 		<module>Player</module>
+		<module>Common</module>
 	</modules>
 </project>

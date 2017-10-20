@@ -1,10 +1,12 @@
 package com.takeaway.broker;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
+
+import com.takeaway.broker.services.ServiceProvider;
+import com.takeaway.requestbean.ServiceRequestWrapper;
 
 public class PlayerHandler extends Thread{
 
@@ -16,37 +18,32 @@ public class PlayerHandler extends Thread{
 	@Override
 	public void run() {
 
-		String line=null;
-		BufferedReader reader = null;
-		BufferedReader writer = null;
-		PrintWriter os=null;
+		ObjectInputStream reader = null;
+		ObjectOutputStream writer = null;
 		try{
-			reader= new BufferedReader(new InputStreamReader(s.getInputStream()));
-			writer = new BufferedReader(new InputStreamReader(System.in));
-			os=new PrintWriter(s.getOutputStream());
-
-			String response=null;
+			writer = new ObjectOutputStream(s.getOutputStream());
+			reader= new ObjectInputStream(s.getInputStream());
 			
-			long gameId= System.currentTimeMillis();
-			line="Welcome player.\n"; 
-			while(line.compareTo("QUIT")!=0){
-				os.println(line);
-				os.flush();
-				response=reader.readLine();
-				System.out.println("Client Response : "+response);
-				line=writer.readLine();
+			while(true){
+				ServiceRequestWrapper requestWrapper = (ServiceRequestWrapper) reader.readObject();
+				writer.reset();
+				writer.writeUnshared(ServiceProvider.serve(requestWrapper));
+				writer.flush();
 			}
 			
 		} catch (IOException e) {
-			line=this.getName(); 
-			System.out.println("IO Error/ Client "+line+" terminated abruptly");
+			e.printStackTrace();
+			System.out.println("IO Error/ Client "+this.getName()+" terminated abruptly");
 		}catch(NullPointerException e){
-			line=this.getName();
-			System.out.println("Client "+line+" Closed");
+			e.printStackTrace();
+			System.out.println("Client "+this.getName()+" Closed");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Client "+this.getName()+" Closed");
 		}finally{    
 			try{
 				System.out.println("Connection Closing..");
-				reader.close(); os.close(); s.close();
+				reader.close(); writer.close(); s.close();
 			}catch(IOException ie){
 				System.out.println("Socket Close Error");
 			}

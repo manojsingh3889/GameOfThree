@@ -1,6 +1,9 @@
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\context\CommandExecutorContext.java
+E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\utils\ListeningSocket.java
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\ShowRules.java
+E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\utils\BrokerSocketClient.java
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\utils\Const.java
+E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\JoinExistingGame.java
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\Menu.java
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\context\CommandContext.java
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\player\BootStrap.java
@@ -10,4 +13,5 @@ E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\CommandE
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\context\NewGameContext.java
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\context\DummyContext.java
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\Command.java
+E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\utils\SocketClient.java
 E:\workspace\GameOfThree\Player\src\main\java\com\takeaway\menu\command\NewGame.java
