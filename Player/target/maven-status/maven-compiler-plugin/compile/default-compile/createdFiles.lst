@@ -1,0 +1,15 @@
+com\takeaway\menu\command\context\NewGameContext.class
+com\takeaway\menu\command\CommandExecutor.class
+com\takeaway\player\Game.class
+com\takeaway\player\BootStrap.class
+com\takeaway\utils\Const.class
+com\takeaway\menu\command\context\DummyContext.class
+com\takeaway\menu\command\ShowRules.class
+com\takeaway\menu\command\CommandExecutor$1.class
+com\takeaway\menu\Menu.class
+com\takeaway\menu\Menu$OPTIONS.class
+com\takeaway\menu\command\context\CommandExecutorContext.class
+com\takeaway\menu\command\Command.class
+com\takeaway\menu\command\context\CommandContext.class
+com\takeaway\menu\command\NewGame.class
+com\takeaway\menu\command\LeaveCommand.class
