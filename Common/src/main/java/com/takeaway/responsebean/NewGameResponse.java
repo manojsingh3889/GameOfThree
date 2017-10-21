@@ -1,19 +1,23 @@
 package com.takeaway.responsebean;
 
 public class NewGameResponse implements ServiceResponse {
-	private Long gameId;
+	private String gameId;
 	private String response;
 
-	public NewGameResponse(Long gameId, String response) {
+	
+	public NewGameResponse() {
+	}
+
+	public NewGameResponse(String gameId, String response) {
 		this.gameId = gameId;
 		this.response = response;
 	}
 
-	public Long getGameId() {
+	public String getGameId() {
 		return gameId;
 	}
 
-	public void setGameId(Long gameId) {
+	public void setGameId(String gameId) {
 		this.gameId = gameId;
 	}
 

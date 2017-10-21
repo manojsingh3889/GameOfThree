@@ -6,6 +6,10 @@ public class NewGameRequest implements ServiceRequest {
 	private Integer port;
 	
 	
+	public NewGameRequest() {
+		super();
+	}
+
 	public NewGameRequest(String userName, String host, Integer port) {
 		this.userName = userName;
 		this.host = host;

@@ -10,8 +10,8 @@ public class NewGameService implements Service<NewGameRequest, NewGameResponse> 
 	public  NewGameResponse execute(NewGameRequest t) {
 		System.out.println("Recieved new game request.");
 		System.out.println(t);
-		Long gameId = Inventory.add(t);
-		return new NewGameResponse(gameId, "Success");
+		String result = Inventory.add(t);
+		return new NewGameResponse(t.getUserName(), result);
 	}
 
 }

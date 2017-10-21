@@ -7,7 +7,7 @@ public class BootStrap {
 			String serverIP = args[0];
 			int serverPort = Integer.parseInt(args[1]);
 			int listeningPort = Integer.parseInt(args[2]);
-			Game game = new Game(serverIP,serverPort,listeningPort);
+			PlayerConsole game = new PlayerConsole(serverIP,serverPort,listeningPort);
 			game.init();
 		}else{
 			System.out.println("server address missing");

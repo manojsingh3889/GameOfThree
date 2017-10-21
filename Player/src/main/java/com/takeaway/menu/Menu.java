@@ -1,6 +1,6 @@
 package com.takeaway.menu;
 
-import com.takeaway.utils.Const;
+import com.takeaway.player.core.Const;
 
 public class Menu {
 	
