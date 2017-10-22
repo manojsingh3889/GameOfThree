@@ -14,6 +14,7 @@ public class PlayerConsole {
 	protected int listeningPort;
 	public static String userName;
 	public static String gameType;
+	public static Boolean brokerBased = true;
 	public static Scanner scan = new Scanner(System.in);
 	
 	public PlayerConsole(int listeningPort){
@@ -34,10 +35,11 @@ public class PlayerConsole {
 		
 		System.out.print("Please enter your display name:");
 		String uname = scan.nextLine();
-		userName = uname+"_"+listeningPort;
+		userName = uname.trim()+"_"+listeningPort;
 		
 		System.out.print("Please select game type [(A)uto , (M)anual]:");
 		String gtype = scan.nextLine();
+		gtype = gtype.trim();
 		if("M".equalsIgnoreCase(gtype) || "Manual".equalsIgnoreCase(gtype)){
 			gameType="MANUAL";
 		}else if("A".equalsIgnoreCase(gtype) || "Auto".equalsIgnoreCase(gtype)){

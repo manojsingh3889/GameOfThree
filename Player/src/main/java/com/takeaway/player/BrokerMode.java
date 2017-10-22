@@ -18,6 +18,7 @@ public class BrokerMode extends PlayerConsole{
 		super(listeningPort);
 		this.serverIP = serverIP;
 		this.serverPort = serverPort;
+		PlayerConsole.brokerBased = true;
 	}
 
 	public void init(){

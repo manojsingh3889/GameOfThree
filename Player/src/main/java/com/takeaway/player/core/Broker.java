@@ -47,7 +47,7 @@ public class Broker {
 					if(FAIL_PING_COUNTER>=5){
 						//check if timer need to not to wait
 						Broker.continueSig();
-						System.out.println("Broker is down for continues 10second.."
+						System.out.println("Broker is down for continues 10 seconds.."
 								+ "Exiting game");
 						System.exit(1);
 					}

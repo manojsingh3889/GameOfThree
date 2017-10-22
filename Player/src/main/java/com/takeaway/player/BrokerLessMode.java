@@ -10,6 +10,7 @@ public class BrokerLessMode extends PlayerConsole{
 
 	public BrokerLessMode(int listeningPort){
 		super(listeningPort);
+		PlayerConsole.brokerBased = false;
 	}
 
 	public void init(){
@@ -32,6 +33,7 @@ public class BrokerLessMode extends PlayerConsole{
 		String hostname = PlayerConsole.scan.nextLine();
 		System.out.print("Opponent port:");
 		int port = PlayerConsole.scan.nextInt();
+		PlayerConsole.scan.nextLine();
 		System.out.print("Opponent name:");
 		String opponentName = PlayerConsole.scan.nextLine();
 		System.out.println();

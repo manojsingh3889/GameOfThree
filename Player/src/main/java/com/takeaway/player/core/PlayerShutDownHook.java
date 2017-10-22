@@ -14,7 +14,7 @@ public class PlayerShutDownHook extends Thread {
 		System.out.println("Starting "+this.getClass());
 		//send game remove signal to broker if exist
 		System.out.println("removing any residual started game.");
-		Broker.removeGame(new RemoveGameRequest(BrokerMode.userName));
+//		Broker.removeGame(new RemoveGameRequest(BrokerMode.userName));
 		System.out.println("Ending "+this.getClass());
 	}
 

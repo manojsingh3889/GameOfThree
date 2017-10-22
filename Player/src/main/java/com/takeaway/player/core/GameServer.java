@@ -32,10 +32,11 @@ public class GameServer {
 		try {
 			System.out.println("Waiting for other user");
 			sock = sersock.accept( );
-			Broker.suspendHealthTimer(); // stop health check for moment
-
+			
+			if (PlayerConsole.brokerBased) Broker.suspendHealthTimer(); // stop health check for moment
+			
 			/*Remove from server if someone joined manually*/
-			Broker.removeGame(new RemoveGameRequest(PlayerConsole.userName));
+			if (PlayerConsole.brokerBased) Broker.removeGame(new RemoveGameRequest(PlayerConsole.userName));
 
 			/** Create resources**/
 			ostream = sock.getOutputStream(); 
@@ -80,6 +81,6 @@ public class GameServer {
 			}
 		}
 
-		Broker.resumeHealthTimer();
+		if (PlayerConsole.brokerBased) Broker.resumeHealthTimer();
 	}
 }

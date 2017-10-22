@@ -26,6 +26,7 @@ public class Menu {
 		for(Menu.OPTIONS option: Menu.OPTIONS.values()){
 			System.out.println((option.ordinal()+1)+" : "+option);
 		}
+		System.out.print("Please select a option number:");
 		int input = PlayerConsole.scan.nextInt();
 
 		if(input>0 && input < 5){

@@ -19,7 +19,7 @@ public class JoinExistingGame implements Command<DummyContext> {
 	@Override
 	public void execute(DummyContext context) {
 		/** Query for existing game **/
-		int padding = 20;
+		int padding = 15;
 		try {
 			DisplayResponse displayResponse = Broker.showGames(new DisplayRequest());
 
@@ -34,7 +34,7 @@ public class JoinExistingGame implements Command<DummyContext> {
 						StringUtils.center("Port", padding));
 				for(String gameId : displayResponse.getGames().keySet()){
 
-					if (gameId.equals(BrokerMode.userName)) {
+					if (!gameId.equals(BrokerMode.userName)) {
 						System.out.printf("%s %s %s %s\n", StringUtils.center(gameId.toString(), padding),
 								StringUtils.center(displayResponse.getGames().get(gameId).getUserName(), padding),
 								StringUtils.center(displayResponse.getGames().get(gameId).getHost(), padding),
@@ -45,7 +45,7 @@ public class JoinExistingGame implements Command<DummyContext> {
 
 				//Ask broker to allot game
 				BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-				System.out.println("Enter game id to join (To skip type skip): ");
+				System.out.print("Enter game id to join (To skip type skip): ");
 				String gameId = reader.readLine();
 				
 				if (!"skip".equals(gameId) || displayResponse.getGames().containsKey(gameId)) {

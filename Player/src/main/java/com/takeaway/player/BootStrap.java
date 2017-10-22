@@ -13,7 +13,7 @@ public class BootStrap {
 				if(args.length>3){
 					String serverIP = args[2];
 					int serverPort = Integer.parseInt(args[3]);
-					Runtime.getRuntime().addShutdownHook(new PlayerShutDownHook());
+//					Runtime.getRuntime().addShutdownHook(new PlayerShutDownHook());
 					PlayerConsole console = new BrokerMode(serverIP,serverPort,listeningPort);
 					console.init();
 				}else{
@@ -24,6 +24,10 @@ public class BootStrap {
 			}else if("broker-less".equalsIgnoreCase(mode)){
 				PlayerConsole console = new BrokerLessMode(listeningPort);
 				console.init();
+			}else{
+				System.out.println("Invalid boot mode. user broker or broker-less.");
+				System.out.println("usage: \n\t1. broker mode :java -jar Player.jar <listening-port> broker <broker-ip> <broker-port>"
+						+ "\n\t2. broker-less mode :java -jar Player.jar <listening-port> broker-less");
 			}
 		}else{
 			System.out.println("Insufficient arguments.");
