@@ -9,7 +9,9 @@ public class NewGameService implements Service<NewGameRequest, NewGameResponse> 
 	@Override
 	public  NewGameResponse execute(NewGameRequest t) {
 		System.out.println("Recieved new game request.");
-		System.out.println(t);
+		System.out.println("Game added [userName="+t.getUserName()+","
+				+ " host="+t.getHost()+","
+						+ " port="+t.getPort()+"]");
 		String result = Inventory.add(t);
 		return new NewGameResponse(t.getUserName(), result);
 	}

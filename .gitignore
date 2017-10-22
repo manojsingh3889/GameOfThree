@@ -2,4 +2,15 @@
 .classpath
 .editorconfig
 .project
-/.setting/
+.setting/
+.setting
+.settings/
+Broker/.settings/
+Broker/dependency-reduced-pom.xml
+Common/.settings/
+Common/bin/
+Player/.settings/
+Player/bin/
+Player/dependency-reduced-pom.xml
+bin/
+

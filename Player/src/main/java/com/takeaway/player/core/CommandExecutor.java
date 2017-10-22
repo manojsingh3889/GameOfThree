@@ -1,9 +1,13 @@
-package com.takeaway.menu.command;
+package com.takeaway.player.core;
 
+import com.takeaway.menu.command.Command;
+import com.takeaway.menu.command.JoinExistingGame;
+import com.takeaway.menu.command.LeaveCommand;
+import com.takeaway.menu.command.NewGame;
+import com.takeaway.menu.command.ShowRules;
 import com.takeaway.menu.command.context.CommandExecutorContext;
 import com.takeaway.menu.command.context.DummyContext;
 import com.takeaway.menu.command.context.NewGameContext;
-import com.takeaway.player.core.JoinExistingGame;
 
 public class CommandExecutor implements Command<CommandExecutorContext>{
 

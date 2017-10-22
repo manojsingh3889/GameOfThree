@@ -4,17 +4,19 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.takeaway.menu.Menu;
-import com.takeaway.menu.command.CommandExecutor;
 import com.takeaway.menu.command.context.CommandExecutorContext;
 import com.takeaway.player.core.Broker;
+import com.takeaway.player.core.CommandExecutor;
 import com.takeaway.player.core.ListeningServerSocket;
 
 public class PlayerConsole {
 
-	public static String userName;
 	private String serverIP;
 	private int serverPort;
 	private int listeningPort;
+	public static String userName;
+	public static String gameType;
+	public static Scanner scan = new Scanner(System.in);
 	
 	public PlayerConsole(String serverIP,int serverPort,int listeningPort){
 		this.serverIP = serverIP;
@@ -23,7 +25,6 @@ public class PlayerConsole {
 	}
 	
 	public void init(){
-		Scanner scan = new Scanner(System.in);
 		
 		try {
 			Broker.init(serverIP, serverPort);
@@ -43,16 +44,29 @@ public class PlayerConsole {
 		
 		System.out.println("************Welcome to GAME_OF_THREE************\n\nCompete to become the Ruler of realm >>THREE<<\n");
 		
-		System.out.println("Please enter your display name");
-		String input = scan.nextLine();
-		userName = input+"_"+listeningPort;
+		System.out.print("Please enter your display name:");
+		String uname = scan.nextLine();
+		userName = uname+"_"+listeningPort;
+		
+		System.out.print("Please select game type [(A)uto , (M)anual]:");
+		String gtype = scan.nextLine();
+		if("M".equalsIgnoreCase(gtype) || "Manual".equalsIgnoreCase(gtype)){
+			gameType="MANUAL";
+		}else if("A".equalsIgnoreCase(gtype) || "Auto".equalsIgnoreCase(gtype)){
+			gameType="AUTO";
+		}else{
+			System.out.println("Invalid input. Exiting program.");
+			System.exit(1);
+		}
+			
+		
 		
 		while (true) {
-			showMenu(scan);
+			showMenu();
 		}
 	}
-	public void showMenu(Scanner scan){
-
+	public void showMenu(){
+//		Scanner scan = new Scanner(System.in);
 		System.out.println("\n\nHi "+userName+", Please select option from menu");
 		for(Menu.OPTIONS option: Menu.OPTIONS.values()){
 			System.out.println((option.ordinal()+1)+" : "+option);
@@ -67,13 +81,6 @@ public class PlayerConsole {
 		}else{
 			System.out.println("Invalid option selected");
 		}
-	}
-	
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+//		scan.close();
 	}
 }

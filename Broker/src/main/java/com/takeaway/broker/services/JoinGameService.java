@@ -13,6 +13,9 @@ public class JoinGameService implements Service<JoinGameRequest, JoinGameRespons
 		if(gameDetail == null){
 			return new JoinGameResponse(gameDetail,"FAILED");
 		}else{
+			System.out.println("Game removed [userName="+gameDetail.getUserName()+","
+					+ " host="+gameDetail.getHost()+","
+							+ " port="+gameDetail.getPort()+"]");
 			return new JoinGameResponse(gameDetail,"SUCCESS");
 		}
 	}
