@@ -1,6 +1,6 @@
 package com.takeaway.player.core;
 
-import com.takeaway.player.PlayerConsole;
+import com.takeaway.player.BrokerMode;
 
 public class PlayerGameSocketClient {
 	private String playerName;
@@ -16,7 +16,7 @@ public class PlayerGameSocketClient {
 	public void play(){
 		System.out.println("********************************************************************");
 		GameClient session = new GameClient();
-		session.start(false,this.playerName,PlayerConsole.userName,serverIP,serverPort);
+		session.start(false,this.playerName,BrokerMode.userName,serverIP,serverPort);
 		System.out.println("********************************************************************");
 	}
 }

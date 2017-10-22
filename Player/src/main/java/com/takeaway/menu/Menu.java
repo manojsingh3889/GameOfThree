@@ -1,5 +1,8 @@
 package com.takeaway.menu;
 
+import com.takeaway.menu.command.context.CommandExecutorContext;
+import com.takeaway.player.PlayerConsole;
+import com.takeaway.player.core.CommandExecutor;
 import com.takeaway.player.core.Const;
 
 public class Menu {
@@ -19,4 +22,19 @@ public class Menu {
 		}
 	}
 
+	public void showMenu(String userName){
+		for(Menu.OPTIONS option: Menu.OPTIONS.values()){
+			System.out.println((option.ordinal()+1)+" : "+option);
+		}
+		int input = PlayerConsole.scan.nextInt();
+
+		if(input>0 && input < 5){
+			Menu.OPTIONS option = Menu.OPTIONS.values()[input-1];
+			CommandExecutor commandExecutor = new CommandExecutor();
+			commandExecutor.execute(new CommandExecutorContext(option, userName));
+
+		}else{
+			System.out.println("Invalid option selected");
+		}
+	}
 }

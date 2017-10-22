@@ -2,15 +2,15 @@ package com.takeaway.responsebean;
 
 import com.takeaway.requestbean.NewGameRequest;
 
-public class JoinGameResponse implements ServiceResponse {
+public class RemoveGameResponse implements ServiceResponse {
 	private NewGameRequest gameDetail;
 	private String response;
 	
-	public JoinGameResponse() {
+	public RemoveGameResponse() {
 		super();
 	}
 	
-	public JoinGameResponse(NewGameRequest gameDetail, String response) {
+	public RemoveGameResponse(NewGameRequest gameDetail, String response) {
 		super();
 		this.gameDetail = gameDetail;
 		this.response = response;
@@ -31,4 +31,6 @@ public class JoinGameResponse implements ServiceResponse {
 	public void setResponse(String response) {
 		this.response = response;
 	}
+	
+	
 }

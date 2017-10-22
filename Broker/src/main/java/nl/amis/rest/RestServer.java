@@ -10,12 +10,15 @@ import javax.ws.rs.core.MediaType;
 import com.takeaway.broker.services.DisplayGamesService;
 import com.takeaway.broker.services.JoinGameService;
 import com.takeaway.broker.services.NewGameService;
+import com.takeaway.broker.services.RemoveGameService;
 import com.takeaway.requestbean.DisplayRequest;
 import com.takeaway.requestbean.JoinGameRequest;
 import com.takeaway.requestbean.NewGameRequest;
+import com.takeaway.requestbean.RemoveGameRequest;
 import com.takeaway.responsebean.DisplayResponse;
 import com.takeaway.responsebean.JoinGameResponse;
 import com.takeaway.responsebean.NewGameResponse;
+import com.takeaway.responsebean.RemoveGameResponse;
 
 @Path("/broker/service")
 public class RestServer {
@@ -49,8 +52,17 @@ public class RestServer {
 	@Path("joingame")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public JoinGameResponse newGame(JoinGameRequest request) {
+	public JoinGameResponse joinGame(JoinGameRequest request) {
 		JoinGameService joinGameService = new JoinGameService();
 		return joinGameService.execute(request);
+	}
+	
+	@POST
+	@Path("removegame")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public RemoveGameResponse removeGame(RemoveGameRequest request) {
+		RemoveGameService removeGameService = new RemoveGameService();
+		return removeGameService.execute(request);
 	}
 }

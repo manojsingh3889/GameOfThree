@@ -3,7 +3,6 @@ package com.takeaway.player.core;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ListeningServerSocket {
@@ -27,6 +26,7 @@ public class ListeningServerSocket {
 
 	public static void shutdown(){
 		try {
+			System.out.println("Shutding down listening socket");
 			serverSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -39,4 +39,9 @@ public class ListeningServerSocket {
 		session.start(serverSocket);
 		System.out.println("********************************************************************");
 	} 
+	
+	@Override
+	protected void finalize() throws Throwable {
+		shutdown();
+	}
 }

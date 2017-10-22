@@ -8,6 +8,11 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
+
+import com.takeaway.player.BrokerMode;
+import com.takeaway.player.PlayerConsole;
+import com.takeaway.requestbean.RemoveGameRequest;
 
 public class GameServer {
 
@@ -27,6 +32,10 @@ public class GameServer {
 		try {
 			System.out.println("Waiting for other user");
 			sock = sersock.accept( );
+			Broker.suspendHealthTimer(); // stop health check for moment
+
+			/*Remove from server if someone joined manually*/
+			Broker.removeGame(new RemoveGameRequest(PlayerConsole.userName));
 
 			/** Create resources**/
 			ostream = sock.getOutputStream(); 
@@ -55,7 +64,9 @@ public class GameServer {
 				}
 			}               
 
-		} catch (IOException e) {
+		} catch(SocketException e){
+			System.out.println("\tGame terminated by opponent.");
+		}catch (IOException e) {
 			e.printStackTrace();
 		}finally{
 			try {
@@ -68,5 +79,7 @@ public class GameServer {
 				e.printStackTrace();
 			}
 		}
+
+		Broker.resumeHealthTimer();
 	}
 }

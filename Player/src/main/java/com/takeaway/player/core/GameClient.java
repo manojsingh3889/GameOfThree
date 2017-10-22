@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class GameClient {
 	public void start(boolean owner,String opponent,String you,String ip,int port) {
@@ -38,7 +39,7 @@ public class GameClient {
 					pwrite.flush();                    // flush the data
 					isStarted = false;
 					//print game start message
-					System.out.println("\n\n\tPlayer Started");
+					System.out.println("\n\n\tGame Started.. Wait for player response..");
 				}else{
 					//read first move from owner
 					if((receiveMessage = receiveRead.readLine()) != null){	
@@ -48,7 +49,9 @@ public class GameClient {
 					}     
 				}
 			} 
-		} catch (Exception e) {
+		}catch(SocketException e){
+			System.out.println("Player left.");
+		}catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			try {
@@ -56,7 +59,6 @@ public class GameClient {
 				istream.close();
 				pwrite.close();
 				ostream.close();
-				//				keyRead.close();
 				sock.close();
 			} catch (IOException e) {
 				e.printStackTrace();

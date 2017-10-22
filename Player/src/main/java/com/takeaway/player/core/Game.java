@@ -3,13 +3,13 @@ package com.takeaway.player.core;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import com.takeaway.player.PlayerConsole;
+import com.takeaway.player.BrokerMode;
 
 public class Game {
 
 	public void firstMove(PrintWriter write) throws IOException{
 		System.out.print("\tStart by entering random number :");
-		int first = PlayerConsole.scan.nextInt();
+		int first = BrokerMode.scan.nextInt();
 		System.out.println("\tYou Started");
 		System.out.println("\tYou:[First move =" + first + "]");
 		//-2 to indicate that its a first move
@@ -33,7 +33,7 @@ public class Game {
 			return false;
 		}
 		
-		int yourMove = "AUTO".equalsIgnoreCase(PlayerConsole.gameType)? calculateMove(result):enterMove(result);
+		int yourMove = "AUTO".equalsIgnoreCase(BrokerMode.gameType)? calculateMove(result):enterMove(result);
 		
 		int youAdded = (yourMove*3)-result;
 		String yourResponse = new StringBuilder().append(youAdded).append(":").append(yourMove).toString();
@@ -65,7 +65,7 @@ public class Game {
 	public Integer enterMove(Integer input){
 		while(true){
 			System.out.print("\tPlease add number (-1,0,1) only :");
-			int add = PlayerConsole.scan.nextInt();
+			int add = BrokerMode.scan.nextInt();
 			if(add == -1 || add == 0 || add == 1){
 				if((input+add)%3==0){
 					return ((input+add)/3);
